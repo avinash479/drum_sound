@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+</head>
+
+<body>
+  <h1 id="title">Drum 🥁 Kit</h1>
+  <div class="set">
+    <button class="w drum">w</button>
+    <button class="a drum">a</button>
+    <button class="s drum">s</button>
+    <button class="d drum">d</button>
+    <button class="j drum">j</button>
+    <button class="k drum">k</button>
+    <button class="l drum">l</button>
+  </div>
+
+  <footer>
+    Made with ❤️ in India.
+  </footer>
+  <script>
+    let btn1 = document.querySelector(".w");
+    btn1.addEventListener("click", () => {
+      var audio = new Audio("tom-1.mp3");
+      buttonAnimation("w");
+      audio.play();
+    });
+
+    let btn2 = document.querySelector(".a");
+    btn2.addEventListener("click", () => {
+      var audio = new Audio("tom-2.mp3");
+      buttonAnimation("a");
+      audio.play();
+    });
+
+    let btn3 = document.querySelector(".s");
+    btn3.addEventListener("click", () => {
+      var audio = new Audio("tom-3.mp3");
+      buttonAnimation("s");
+      audio.play();
+    });
+
+    let btn4 = document.querySelector(".d");
+    btn4.addEventListener("click", () => {
+      var audio = new Audio("tom-4.mp3");
+      buttonAnimation("d");
+      audio.play();
+    });
+
+    let btn5 = document.querySelector(".j");
+    btn5.addEventListener("click", () => {
+      var audio = new Audio("snare.mp3");
+      buttonAnimation("j");
+      audio.play();
+    });
+
+    let btn6 = document.querySelector(".k");
+    btn6.addEventListener("click", () => {
+      var audio = new Audio("crash.mp3");
+      buttonAnimation("k");
+      audio.play();
+    });
+
+    let btn7 = document.querySelector(".l");
+    btn7.addEventListener("click", () => {
+      var audio = new Audio("kick-bass.mp3");
+      buttonAnimation("l");
+      audio.play();
+    });
+
+    document.addEventListener("keypress", function(event) {
+      let key = event.key; // Get the key that was pressed
+      playSound(key);
+      buttonAnimation(key);
+    });
+
+    function playSound(key) {
+      let audio;
+      switch (key) {
+        case "w":
+          audio = new Audio("tom-1.mp3");
+          break;
+        case "a":
+          audio = new Audio("tom-2.mp3");
+          break;
+        case "s":
+          audio = new Audio("tom-3.mp3");
+          break;
+        case "d":
+          audio = new Audio("tom-4.mp3");
+          break;
+        case "j":
+          audio = new Audio("snare.mp3");
+          break;
+        case "k":
+          audio = new Audio("crash.mp3");
+          break;
+        case "l":
+          audio = new Audio("kick-bass.mp3");
+          break;
+        default:
+          return; // If the key doesn't match, do nothing
+      }
+      audio.play();
+    }
+
+    function buttonAnimation(currentKey) {
+      let activeButton = document.querySelector("." + currentKey);
+      if (activeButton) {
+        activeButton.classList.add("pressed");
+        setTimeout(() => {
+          activeButton.classList.remove("pressed");
+        }, 100);
+      }
+    }
+  </script>
+</body>
+
+</html>
